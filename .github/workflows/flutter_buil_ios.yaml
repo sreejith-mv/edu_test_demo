@@ -1,0 +1,28 @@
+name: Flutter Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        with:
+          architecture: v64
+      - name: Setup
+        uses: subosito/flutter-action@v2.10.0
+        with:
+          flutter-version: 3.7
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Build
+        run: flutter build ios --release --no-codesign
+      - name: Move Artifacts
+        run: actions/upload-artifact@v3.1.2
+        with:
+          name: app-release.ask
+          path: build/app/outputs/flutter-apk/app-release.ask
