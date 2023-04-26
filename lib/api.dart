@@ -7,7 +7,6 @@ class ProductsApi {
 
   Future<dynamic> getProducts() async {
     final response = await http.get(Uri.parse(url));
-
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
