@@ -1,6 +1,6 @@
 # edu_test_demo
 
-A new Flutter project.
+A new Flutter project to action test
 
 ## Getting Started
 
