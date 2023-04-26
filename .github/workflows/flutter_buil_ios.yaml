@@ -12,17 +12,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.2
         with:
-          architecture: v64
+          channel: "stable"
+          architecture: x64
+
       - name: Setup
         uses: subosito/flutter-action@v2.10.0
         with:
           flutter-version: 3.7
-      - name: Install Dependencies
+
+      - name: Install Deps
         run: flutter pub get
+
       - name: Build
         run: flutter build ios --release --no-codesign
-      - name: Move Artifacts
-        run: actions/upload-artifact@v3.1.2
+
+      - name: Move Artifact
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: Runner.app
-          path: build/ios/outputs/iphoneos/Runner.app
+          path: /build/ios/iphoneos/Runner.app
