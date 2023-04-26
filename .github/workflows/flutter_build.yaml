@@ -8,32 +8,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      market:
-        type: string
-        description: Market ID (optional)
-      environment:
-        type: choice
-        description: Environment
-        options:
-          - prod
-          - stage
-          - test
-          - dev
-      procedure:
-        type: choice
-        description: Procedure
-        options:
-          - Upload to BetaApps
-          - Upload to App Store Consoles
-          - Upload for Pre-release Testing
-          - Invite Additional TestFlight Users
-          - Download App Store Metadata
-      newton_ci_branch:
-        type: string
-        description: Newton CI Version
-        default: 3.x
 
 jobs:
   iOS:
